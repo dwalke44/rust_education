@@ -1,13 +1,22 @@
+use std::io;
+
 fn main() {
-    // step 0 
-    let x = 5;
-    // step 1
-    let x = x + 1;
-    // step 1 is shadowed by what's inside here
-    {   // step 2
-        let x = x * 2;
-        println!("The value of x in the inner scope is: {x}");
-    }
-    // back to step 1 val
-    println!("The value of x is: {x}");
+    let a = [1, 2, 3, 4, 5];
+
+    println!("Please enter an array index.");
+
+    let mut index = String::new();
+
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
+
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
+
+    let element = a[index];
+
+    println!("The value of the element at index {index} is: {element}");
 }
